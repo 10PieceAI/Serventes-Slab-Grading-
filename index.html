@@ -8,20 +8,56 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
   <style>
-    html,body {margin:0;padding:0;font-family:Inter,system-ui;background:#fafafa;color:#111;}
-    .hero{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:70vh;text-align:center;padding:3rem 1.5rem;}
-    h1{font-size:3rem;font-weight:700;margin:0 0 1rem;}
+    :root {
+      --accent: #d60000;
+      --black: #0a0a0a;
+      --gray: #eeeeee;
+    }
+
+    html,body{margin:0;padding:0;font-family:Inter,system-ui;background:#fafafa;color:var(--black);}
+    header.hero{
+      background:var(--black);
+      color:white;
+      padding:4rem 1.5rem;
+      text-align:center;
+      display:flex;flex-direction:column;justify-content:center;align-items:center;
+    }
+    h1{font-size:3rem;font-weight:700;margin-bottom:1rem;}
     p.lead{font-size:1.25rem;max-width:40rem;margin:0 auto 2rem;line-height:1.5;}
-    .cta{display:inline-block;padding:1rem 2rem;font-weight:600;border-radius:0.75rem;border:2px solid #111;text-decoration:none;transition:0.2s;}
-    .cta:hover{background:#111;color:#fff;}
+    .cta{
+      display:inline-block;padding:1rem 2rem;font-weight:600;border-radius:0.75rem;
+      text-decoration:none;border:2px solid var(--accent);color:var(--accent);
+      background:white;transition:0.2s;
+    }
+    .cta:hover{background:var(--accent);color:#fff;}
+
     section{padding:4rem 1.5rem;max-width:60rem;margin:auto;}
-    h2{font-size:2rem;margin-bottom:1rem;}
+    h2{font-size:2rem;margin-bottom:1rem;font-weight:700;color:var(--accent);}
     ul{margin:0;padding-left:1.25rem;line-height:1.6;}
     footer{padding:3rem 1.5rem;text-align:center;font-size:0.875rem;color:#666;}
+    
     .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1.25rem;}
-    .slab{background:#fff;aspect-ratio:2/3;border-radius:0.75rem;border:1px solid #ddd;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:0.9rem;color:#aaa;}
-    table{width:100%;border-collapse:collapse;font-size:1rem;margin-top:1.5rem;}
+    .slab{
+      background:white;aspect-ratio:2/3;border-radius:0.75rem;border:1px solid #ddd;
+      display:flex;align-items:center;justify-content:center;font-weight:600;font-size:0.9rem;color:#aaa;
+    }
+
+    table{width:100%;border-collapse:collapse;font-size:1rem;margin-top:1.5rem;background:white;}
     table th,table td{padding:0.75rem;border-bottom:1px solid #ddd;text-align:left;}
+    table th{background:var(--black);color:white;}
+
+    form{background:white;border:1px solid #ddd;border-radius:0.75rem;padding:2rem;margin-top:2rem;}
+    form label{display:block;font-weight:600;margin-top:1rem;}
+    form input,form select{
+      width:100%;padding:0.75rem;border-radius:0.5rem;border:1px solid #ccc;margin-top:0.25rem;
+      font-size:1rem;
+    }
+    form button{
+      margin-top:1.5rem;padding:1rem 2rem;font-size:1rem;font-weight:700;
+      border-radius:0.75rem;border:none;background:var(--accent);color:white;cursor:pointer;
+      width:100%;
+    }
+    form button:hover{background:#b00000;}
   </style>
 </head>
 <body>
@@ -63,6 +99,23 @@
   </table>
 
   <p style="margin-top:0.75rem;font-size:0.9rem;color:#555;">return shipping billed after final weight — slabs ship in security bag</p>
+
+  <h2 style="margin-top:3rem;">Pre-Submit Guest Form</h2>
+  <form action="https://formspree.io/f/submit" method="POST">
+    <label>Name</label>
+    <input type="text" name="name" required>
+    <label>Email</label>
+    <input type="email" name="email" required>
+    <label>Card (name / set)</label>
+    <input type="text" name="card" required>
+    <label>Service Tier</label>
+    <select name="tier">
+      <option value="Economy $15">Economy — $15</option>
+      <option value="Standard $30">Standard — $30</option>
+      <option value="Priority $50">Priority — $50</option>
+    </select>
+    <button type="submit">Request Pre-Submit Slot</button>
+  </form>
 </section>
 
 <section>
